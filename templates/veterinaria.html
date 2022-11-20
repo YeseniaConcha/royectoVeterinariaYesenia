@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Veterinaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  
+
+  <body>
+    <div class="container mt-5">
+        <div class="alert alert-primary display-1 text-center">
+            <strong>Lista de pacientes</strong>
+        </div>
+
+              <!-- se muestra el promedio del total de los precios -->
+      <div class="alert alert-primary">
+        <strong>El promedio del valor es: </strong> {{promedio.valor__avg}}
+      </div>
+      <!-- se muestra la suma del total de los precios -->
+      <div class="alert alert-primary">
+        <strong>la suma del valor es: </strong> {{suma.valor__sum}}
+      </div>
+      <!-- se muestra el maximo de los precios -->
+      <div class="alert alert-primary">
+        <strong>el valor más alto es: </strong> {{maximo.valor__max}}
+      </div>
+      <!-- se muestra el minimo de los precios -->
+      <div class="alert alert-primary">
+        <strong>el valor más bajo es: </strong> {{minimo.valor__min}}
+      </div>
+
+        {% if veterina %}
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha de atencion</th>
+                        <th scope="col">Motivo</th>
+                        <th scope="col">Diagnostico</th>
+                        <th scope="col">Tratamiento</th>
+                        <th scope="col">Observación</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Acciones</th>
+
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for veterina in veterina %}
+                    <tr class="">
+                        <td scope="row">{{veterina.id}}</td>
+                        <td>{{veterina.nombre}}</td>
+                        <td>{{veterina.FechaAtencion}}</td>
+                        <td>{{veterina.motivo}}</td>
+                        <td>{{veterina.diagnostico}}</td>
+                        <td>{{veterina.tratamiento}}</td>
+                        <td>{{veterina.observacion}}</td>
+                        <td>{{veterina.valor}}</td>
+                        <td>
+                            <a href="/editarPaciente/{{veterina.id}}" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
+                            <a href="/eliminarPaciente/{{veterina.id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>                         
+                        </td>
+
+
+
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% else %}
+
+        <div class="alert alert-warning">
+            No hay pacientes registrados 
+        </div>
+
+        {% endif %}
+
+        <a href="/" class="btn btn-danger">Volver</a>
+        <a href="/agregar" class="btn btn-success float-end">Agregar</a>
+
+  
+
+    </div>
+
+
+    
+    <!-- JavaScript Bundle with Popper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+
+</html> 
